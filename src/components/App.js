@@ -12,19 +12,23 @@ class App extends Component {
       todos: [
         {
           id: 1,
-          text: 'Feed the cat'
+          completed: true,
+          text: 'Feed the cat (complete)'
         },
         {
           id: 2,
-          text: 'Pay taxes'
+          completed: false,
+          text: 'Pay taxes (incomplete)'
         },
         {
           id: 3,
-          text: 'Paint the house'
+          completed: true,
+          text: 'Paint the house (complete)'
         },
         {
           id: 4,
-          text: 'Change oil in car'
+          completed: false,
+          text: 'Change oil in car (incomplete)'
         }
     ]
     };
@@ -36,10 +40,17 @@ class App extends Component {
     console.log(`new todo added: ${todo}`);
   }
   filterTodos() {
-    let {searchText, todos} = this.state;
-
+    console.log(this.state.searchT)
+    let {searchText, showCompleted, todos} = this.state;
+    searchText = searchText.toLowerCase();
+    
     return todos.filter((todo) => {
-      return todo.text.toLowerCase().includes(searchText.toLowerCase());
+      if (!showCompleted) {
+        return !todo.completed && todo.text.toLowerCase().includes(searchText);
+      } else {
+        return todo.text.toLowerCase().includes(searchText);
+      }
+      
     });
   }
   render() {
