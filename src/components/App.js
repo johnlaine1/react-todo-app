@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
 import TodoAddForm from './TodoAddForm';
+import TodoSearch from './TodoSearch';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      searchText: '',
+      showCompleted: false,
       todos: [
         {
           id: 1,
@@ -26,17 +29,30 @@ class App extends Component {
     ]
     };
   }
+  handleSearch(searchText, showCompleted) {
+    this.setState({searchText, showCompleted});
+  }
   handleAddTodo(todo) {
     console.log(`new todo added: ${todo}`);
   }
+  filterTodos() {
+    let {searchText, todos} = this.state;
+
+    return todos.filter((todo) => {
+      return todo.text.toLowerCase().includes(searchText.toLowerCase());
+    });
+  }
   render() {
-    const {todos} = this.state;
-    
+    const {searchText, showCompleted} = this.state;
     return (
       <div>
         <div>Todo App</div>
-        <TodoList todos={todos}/>
-        <TodoAddForm onAddTodo={this.handleAddTodo.bind(this)}/>
+        <TodoSearch 
+          searchText={searchText}
+          showCompleted={showCompleted}
+          onSearch={this.handleSearch.bind(this)} />
+        <TodoList todos={this.filterTodos()}/>
+        <TodoAddForm onAddTodo={this.handleAddTodo.bind(this)} />
       </div>
     );
   }
