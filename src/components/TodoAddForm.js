@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 class TodoAddForm extends Component {
-  onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const {onAddTodo} = this.props;
     const todo = this.refs.todoTitle;
     
     if (!todo.value) {
+      todo.focus();
       console.log('Please enter a title for the todo');
     } else {
       onAddTodo(todo.value);
@@ -16,8 +17,8 @@ class TodoAddForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit.bind(this)}>
-          <input ref="todoTitle" type="text" placeholder="Todo Description"/>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
           <button type="submit">Add Todo</button>
         </form>
       </div>  
