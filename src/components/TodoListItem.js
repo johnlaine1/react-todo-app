@@ -8,9 +8,10 @@ class TodoListItem extends Component {
     const {text, completed} = this.props;
     return (
       <div className="row">
-        <div className="col-sm-6 col-sm-offset-3 text-left">
-          <li 
-            onClick={this.handleToggleTodo.bind(this)} 
+        <div
+          onClick={this.handleToggleTodo.bind(this)}
+          className="col-sm-6 col-sm-offset-3 text-left">
+          <li
             className="list-group-item">
             <input 
               type="checkbox" 
