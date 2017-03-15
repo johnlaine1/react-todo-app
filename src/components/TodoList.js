@@ -13,8 +13,10 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <div>TodoList Component</div>
+        <h3>Todos</h3>
+        <ul className="list-group">
           {this.renderTodos()}
+        </ul>
       </div>
     );
   }

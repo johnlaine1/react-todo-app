@@ -7,10 +7,16 @@ class TodoListItem extends Component {
   render() {
     const {text, completed} = this.props;
     return (
-      <div onClick={this.handleToggleTodo.bind(this)} className="checkbox">
-        <input 
-          type="checkbox" 
-          defaultChecked={completed} /> {text}
+      <div className="row">
+        <div className="col-sm-6 col-sm-offset-3 text-left">
+          <li 
+            onClick={this.handleToggleTodo.bind(this)} 
+            className="list-group-item">
+            <input 
+              type="checkbox" 
+              defaultChecked={completed} /> {text}
+          </li>
+        </div>
       </div>
     );
   }

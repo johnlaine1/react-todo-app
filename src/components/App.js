@@ -82,9 +82,12 @@ class App extends Component {
   render() {
     const {searchText, showCompleted} = this.state;
     return (
-      <div>
-        <div>Todo App</div>
-        <TodoSearch 
+      <div className="container text-center">
+        <div className="page-header">
+          <h1>Todo App</h1>
+        </div>
+        <TodoSearch
+          className="text-center"
           searchText={searchText}
           showCompleted={showCompleted}
           onSearch={this.handleSearch.bind(this)} />
