@@ -8,7 +8,6 @@ class TodoAddForm extends Component {
     
     if (!todo.value) {
       todo.focus();
-      console.log('Please enter a title for the todo');
     } else {
       onAddTodo(todo.value);
       todo.value = '';

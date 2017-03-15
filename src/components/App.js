@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodoList from './TodoList';
 import TodoAddForm from './TodoAddForm';
 import TodoSearch from './TodoSearch';
+import uuid from 'node-uuid';
 
 class App extends Component {
   constructor(props) {
@@ -11,36 +12,61 @@ class App extends Component {
       showCompleted: false,
       todos: [
         {
-          id: 1,
+          id: uuid(),
           completed: true,
           text: 'Feed the cat (complete)'
         },
         {
-          id: 2,
+          id: uuid(),
           completed: false,
           text: 'Pay taxes (incomplete)'
         },
         {
-          id: 3,
+          id: uuid(),
           completed: true,
           text: 'Paint the house (complete)'
         },
         {
-          id: 4,
+          id: uuid(),
           completed: false,
           text: 'Change oil in car (incomplete)'
         }
     ]
     };
   }
+  getTodoById(id) {
+    return this.state.todos.map((todo) => {
+      return todo.id;
+    }).indexOf(id);
+  }
   handleSearch(searchText, showCompleted) {
     this.setState({searchText, showCompleted});
   }
-  handleAddTodo(todo) {
-    console.log(`new todo added: ${todo}`);
+  handleAddTodo(text) {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: uuid(),
+          text: text,
+          completed: false
+        }
+      ]
+    });
+  }
+  handleToggleTodo(id) {
+    let updatedTodos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    
+    this.setState({
+      todos: updatedTodos
+    });
   }
   filterTodos() {
-    console.log(this.state.searchT)
     let {searchText, showCompleted, todos} = this.state;
     searchText = searchText.toLowerCase();
     
@@ -62,7 +88,9 @@ class App extends Component {
           searchText={searchText}
           showCompleted={showCompleted}
           onSearch={this.handleSearch.bind(this)} />
-        <TodoList todos={this.filterTodos()}/>
+        <TodoList 
+          onToggleTodo={this.handleToggleTodo.bind(this)}
+          todos={this.filterTodos()}/>
         <TodoAddForm onAddTodo={this.handleAddTodo.bind(this)} />
       </div>
     );
