@@ -17,8 +17,12 @@ class TodoAddForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
-          <button type="submit">Add Todo</button>
+          <div>
+            <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
+          </div>
+          <div>
+            <button className="btn btn-primary add-todo-btn" type="submit">Add Todo</button>
+          </div>
         </form>
       </div>  
     );
