@@ -8,7 +8,6 @@ class TodoSearch extends Component {
     this.props.onSearch(searchText, showCompleted);
   }
   render() {
-    const {searchText, showCompleted} = this.props;
     return (
       <div>
         <div className="form-group">
@@ -19,7 +18,6 @@ class TodoSearch extends Component {
               type="search" 
               className="form-control" 
               id="search-text"
-              value={searchText}
               placeholder="Search Todos" />
           </label>
         </div>
@@ -28,7 +26,6 @@ class TodoSearch extends Component {
             <input 
               type="checkbox"
               ref="showCompleted"
-              checked={showCompleted}
               onChange={this.handleSearchChange.bind(this)}/> 
               Show completed todos
           </label>

@@ -20,6 +20,7 @@ class App extends Component {
     TodoAPI.setTodos(this.state.todos);
   }
   handleSearch(searchText, showCompleted) {
+    searchText = searchText.toLowerCase();
     this.setState({searchText, showCompleted});
   }
   handleAddTodo(text) {
@@ -46,21 +47,10 @@ class App extends Component {
       todos: updatedTodos
     });
   }
-  filterTodos() {
-    let {searchText, showCompleted, todos} = this.state;
-    searchText = searchText.toLowerCase();
-    
-    return todos.filter((todo) => {
-      if (!showCompleted) {
-        return !todo.completed && todo.text.toLowerCase().includes(searchText);
-      } else {
-        return todo.text.toLowerCase().includes(searchText);
-      }
-      
-    });
-  }
   render() {
-    const {searchText, showCompleted} = this.state;
+    const {searchText, showCompleted, todos} = this.state;
+    const filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
+    
     return (
       <div className="container text-center">
         <div className="page-header">
@@ -73,7 +63,7 @@ class App extends Component {
           onSearch={this.handleSearch.bind(this)} />
         <TodoList 
           onToggleTodo={this.handleToggleTodo.bind(this)}
-          todos={this.filterTodos()}/>
+          todos={filteredTodos}/>
         <TodoAddForm onAddTodo={this.handleAddTodo.bind(this)} />
       </div>
     );
