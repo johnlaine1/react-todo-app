@@ -27,6 +27,7 @@ const filterTodos = (todos, showCompleted, searchText) => {
     return !todo.completed || showCompleted;
 
   });
+  
   // Filter by searchText
   filteredTodos = filteredTodos.filter((todo) => {
     return todo.text.toLowerCase().includes(searchText);
