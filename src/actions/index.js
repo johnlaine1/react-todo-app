@@ -1,7 +1,7 @@
 export const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT';
 export const CREATE_TODO = 'CREATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
-export const TOGGLE_TODO_COMPLETE = 'TOGGLE_TODO_COMPLETE';
+export const TOGGLE_COMPLETE_TODO = 'TOGGLE_COMPLETE_TODO';
 export const TOGGLE_SHOW_COMPLETED_TODOS = 'TOGGLE_SHOW_COMPLETED_TODOS';
 
 export const updateSearchText = (text) => {
@@ -27,7 +27,7 @@ export const deleteTodo = (id) => {
 
 export const toggleTodoComplete = (id) => {
   return {
-    type: TOGGLE_TODO_COMPLETE,
+    type: TOGGLE_COMPLETE_TODO,
     payload: id
   };
 };

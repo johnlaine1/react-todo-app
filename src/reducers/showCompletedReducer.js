@@ -5,7 +5,7 @@ const INITIAL_STATE = false;
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TOGGLE_SHOW_COMPLETED_TODOS:
-      return !action.payload;
+      return !state;
     default:
       return state;
   }
