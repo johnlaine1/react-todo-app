@@ -3,6 +3,7 @@ export const CREATE_TODO = 'CREATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const TOGGLE_COMPLETE_TODO = 'TOGGLE_COMPLETE_TODO';
 export const TOGGLE_SHOW_COMPLETED_TODOS = 'TOGGLE_SHOW_COMPLETED_TODOS';
+export const CREATE_TODOS = 'CREATE_TODOS';
 
 export const updateSearchText = (text) => {
   return {
@@ -35,5 +36,12 @@ export const toggleCompleteTodo = (id) => {
 export const toggleShowCompletedTodos = () => {
   return {
     type: TOGGLE_SHOW_COMPLETED_TODOS
+  };
+};
+
+export const createTodos = (todos) => {
+  return {
+    type: CREATE_TODOS,
+    payload: todos
   };
 };

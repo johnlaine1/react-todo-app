@@ -1,6 +1,6 @@
 import uuid from 'uuid/v1';
 import moment from 'moment';
-import {CREATE_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO} from '../actions';
+import {CREATE_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO, CREATE_TODOS} from '../actions';
 
 
 const INITIAL_STATE = [];
@@ -33,6 +33,11 @@ export default (state = INITIAL_STATE, action) => {
         }
         return todo;
       });
+    case CREATE_TODOS:
+      return [
+        ...state,
+        ...action.payload
+      ];
     default:
       return state;
   }
