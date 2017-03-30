@@ -12,7 +12,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         {
           id: uuid(),
-          text: action.payload.text,
+          text: action.payload,
           completed: false,
           createdAt: moment().unix(),
           completedAt: null
@@ -22,7 +22,7 @@ export default (state = INITIAL_STATE, action) => {
       return state.filter(todo => todo.id !== action.payload.id);
     case TOGGLE_COMPLETE_TODO:
       return state.map((todo) => {
-        if (todo.id === action.payload.id) {
+        if (todo.id === action.payload) {
           const toggledCompleted = !todo.completed;
           
           return {
@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
             completedAt: toggledCompleted ? moment().unix() : null
           };
         }
-        
+        return todo;
       });
     default:
       return state;

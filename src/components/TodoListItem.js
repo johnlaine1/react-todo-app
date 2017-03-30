@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {toggleCompleteTodo} from '../actions';
+
 import moment from 'moment';
 
 class TodoListItem extends Component {
-  handleToggleTodo() {
-    this.props.onToggleTodo(this.props.id);
+  onToggleTodo() {
+    this.props.toggleCompleteTodo(this.props.id);
   }
   renderDates() {
     const {completed, createdAt, completedAt} = this.props;
@@ -23,7 +26,7 @@ class TodoListItem extends Component {
           <li
             className="list-group-item">
             <input 
-              onChange={this.handleToggleTodo.bind(this)}
+              onChange={this.onToggleTodo.bind(this)}
               type="checkbox" 
               checked={completed} />
             <p>{text}</p>
@@ -35,4 +38,4 @@ class TodoListItem extends Component {
   }
 }
 
-export default TodoListItem;
+export default connect(null, {toggleCompleteTodo})(TodoListItem);

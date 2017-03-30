@@ -1,22 +1,24 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {createTodo} from '../actions';
 
 class TodoAddForm extends Component {
-  handleSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
-    const {onAddTodo} = this.props;
+    const {createTodo} = this.props;
     const todo = this.refs.todoTitle;
     
     if (!todo.value) {
       todo.focus();
     } else {
-      onAddTodo(todo.value);
+      createTodo(todo.value);
       todo.value = '';
     }
   }
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.onSubmit.bind(this)}>
           <div>
             <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
           </div>
@@ -29,4 +31,4 @@ class TodoAddForm extends Component {
   }
 }
 
-export default TodoAddForm;
+export default connect(null, {createTodo})(TodoAddForm);

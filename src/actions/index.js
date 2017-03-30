@@ -25,7 +25,7 @@ export const deleteTodo = (id) => {
   };
 };
 
-export const toggleTodoComplete = (id) => {
+export const toggleCompleteTodo = (id) => {
   return {
     type: TOGGLE_COMPLETE_TODO,
     payload: id

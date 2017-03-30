@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {updateSearchText, toggleShowCompletedTodos} from '../actions';
 
 class TodoSearch extends Component {
-  handleSearchChange() {
+  onSearchChange() {
     const searchText = this.refs.searchText.value;
-    const showCompleted = this.refs.showCompleted.checked;
-    
-    this.props.onSearch(searchText, showCompleted);
+    this.props.updateSearchText(searchText);
+  }
+  onToggleShowCompleted() {
+    this.props.toggleShowCompletedTodos();
   }
   render() {
     return (
@@ -13,7 +16,7 @@ class TodoSearch extends Component {
         <div className="form-group">
           <label>
             <input 
-              onChange={this.handleSearchChange.bind(this)}
+              onChange={this.onSearchChange.bind(this)}
               ref="searchText"
               type="search" 
               className="form-control" 
@@ -26,7 +29,7 @@ class TodoSearch extends Component {
             <input 
               type="checkbox"
               ref="showCompleted"
-              onChange={this.handleSearchChange.bind(this)}/> 
+              onChange={this.onToggleShowCompleted.bind(this)}/> 
               Show completed todos
           </label>
         </div>
@@ -35,4 +38,4 @@ class TodoSearch extends Component {
   }
 }
 
-export default TodoSearch;
+export default connect(null, {updateSearchText, toggleShowCompletedTodos})(TodoSearch);

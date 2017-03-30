@@ -1,13 +1,13 @@
 import $ from 'jquery';
 
-const setTodos = (todos) => {
+export const setTodos = (todos) => {
   if ($.isArray(todos)) {
     localStorage.setItem('todos', JSON.stringify(todos));
     return todos;
   }
 };
 
-const getTodos =  () => {
+export const getTodos =  () => {
   const stringTodos = localStorage.getItem('todos');
   let todos = [];
   
@@ -19,7 +19,7 @@ const getTodos =  () => {
   return $.isArray(todos) ? todos : [];
 };
 
-const filterTodos = (todos, showCompleted, searchText) => {
+export const filterTodos = (todos, showCompleted, searchText) => {
   let filteredTodos = todos;
   
   // Filter by showCompleted
@@ -46,10 +46,4 @@ const filterTodos = (todos, showCompleted, searchText) => {
   
   return filteredTodos;
 
-};
-
-export default {
-  setTodos,
-  getTodos,
-  filterTodos
 };
