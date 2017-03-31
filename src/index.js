@@ -9,6 +9,8 @@ import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
+import './firebase/index.js';
+
 const store = createStore(reducers, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
