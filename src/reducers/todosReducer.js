@@ -10,13 +10,7 @@ export default (state = INITIAL_STATE, action) => {
     case CREATE_TODO:
       return [
         ...state,
-        {
-          id: uuid(),
-          text: action.payload,
-          completed: false,
-          createdAt: moment().unix(),
-          completedAt: null
-        }
+        action.payload
       ];
     case DELETE_TODO:
       return state.filter(todo => todo.id !== action.payload.id);

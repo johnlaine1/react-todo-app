@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore, compose} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import {setTodos, getTodos} from './api/TodoAPI';
 import {createTodos} from './actions';
-import reducers from './reducers';
+import rootReducer from './reducers';
 import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-import './firebase/index.js';
-
-const store = createStore(reducers, compose(
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 

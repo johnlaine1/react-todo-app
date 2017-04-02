@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {createTodo} from '../actions';
+import {startAddTodo} from '../actions';
 
 class TodoAddForm extends Component {
   onSubmit(e) {
     e.preventDefault();
-    const {createTodo} = this.props;
+    const {startAddTodo} = this.props;
     const todo = this.refs.todoTitle;
     
     if (!todo.value) {
       todo.focus();
     } else {
-      createTodo(todo.value);
+      startAddTodo(todo.value);
       todo.value = '';
     }
   }
@@ -31,4 +31,4 @@ class TodoAddForm extends Component {
   }
 }
 
-export default connect(null, {createTodo})(TodoAddForm);
+export default connect(null, {startAddTodo})(TodoAddForm);
