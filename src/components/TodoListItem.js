@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {toggleCompleteTodo} from '../actions';
+import {startToggleTodo} from '../actions';
 
 import moment from 'moment';
 
 class TodoListItem extends Component {
   onToggleTodo() {
-    this.props.toggleCompleteTodo(this.props.id);
+    const {startToggleTodo, id} = this.props;
+    
+    startToggleTodo(id);
   }
   renderDates() {
     const {completed, createdAt, completedAt} = this.props;
@@ -38,4 +40,4 @@ class TodoListItem extends Component {
   }
 }
 
-export default connect(null, {toggleCompleteTodo})(TodoListItem);
+export default connect(null, {startToggleTodo})(TodoListItem);

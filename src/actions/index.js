@@ -4,7 +4,7 @@ import moment from 'moment';
 export const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT';
 export const CREATE_TODO = 'CREATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
-export const TOGGLE_COMPLETE_TODO = 'TOGGLE_COMPLETE_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
 export const TOGGLE_SHOW_COMPLETED_TODOS = 'TOGGLE_SHOW_COMPLETED_TODOS';
 export const CREATE_TODOS = 'CREATE_TODOS';
 export const START_ADD_TODO = 'START_ADD_TODO';
@@ -51,7 +51,7 @@ export const deleteTodo = (id) => {
 
 export const updateTodo = (id, updates) => {
   return {
-    type: TOGGLE_COMPLETE_TODO,
+    type: UPDATE_TODO,
     id,
     updates
   };

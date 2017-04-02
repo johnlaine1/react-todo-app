@@ -1,6 +1,6 @@
 import uuid from 'uuid/v1';
 import moment from 'moment';
-import {CREATE_TODO, DELETE_TODO, TOGGLE_COMPLETE_TODO, CREATE_TODOS} from '../actions';
+import {CREATE_TODO, DELETE_TODO, UPDATE_TODO, CREATE_TODOS} from '../actions';
 
 
 const INITIAL_STATE = [];
@@ -14,18 +14,14 @@ export default (state = INITIAL_STATE, action) => {
       ];
     case DELETE_TODO:
       return state.filter(todo => todo.id !== action.payload.id);
-    case TOGGLE_COMPLETE_TODO:
+    case UPDATE_TODO:
       return state.map((todo) => {
-        if (todo.id === action.payload) {
-          const toggledCompleted = !todo.completed;
-          
-          return {
-            ...todo,
-            completed: toggledCompleted,
-            completedAt: toggledCompleted ? moment().unix() : null
-          };
+        if (todo.id === action.id) {
+          return {...todo, ...action.updates};
+        } else {
+          return todo;
         }
-        return todo;
+        
       });
     case CREATE_TODOS:
       return [
