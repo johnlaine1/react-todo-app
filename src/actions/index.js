@@ -53,13 +53,7 @@ export const startAddTodos = () => {
       Object.keys(todosObj).forEach((id) => {
         todos.push({id, ...todosObj[id]});
       });
-      
-      
-      // for (var id in todosObj) {
-      //   if (todosObj.hasOwnProperty(id)) {
-      //     todos.push({id, ...todosObj[id]});
-      //   }
-      // }
+
       dispatch(createTodos(todos));
     });
     
