@@ -6,9 +6,9 @@ import moment from 'moment';
 
 class TodoListItem extends Component {
   onToggleTodo() {
-    const {startToggleTodo, id} = this.props;
+    const {startToggleTodo, id, completed} = this.props;
     
-    startToggleTodo(id);
+    startToggleTodo(id, !completed);
   }
   renderDates() {
     const {completed, createdAt, completedAt} = this.props;

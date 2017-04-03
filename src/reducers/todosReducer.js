@@ -21,7 +21,6 @@ export default (state = INITIAL_STATE, action) => {
         } else {
           return todo;
         }
-        
       });
     case CREATE_TODOS:
       return [
