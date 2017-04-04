@@ -8,6 +8,8 @@ export const UPDATE_TODO = 'UPDATE_TODO';
 export const TOGGLE_SHOW_COMPLETED_TODOS = 'TOGGLE_SHOW_COMPLETED_TODOS';
 export const CREATE_TODOS = 'CREATE_TODOS';
 export const START_ADD_TODO = 'START_ADD_TODO';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
 export const updateSearchText = (text) => {
   return {
@@ -120,3 +122,15 @@ export const startLogout = () => {
   };
 };
 
+export const login = (uid) => {
+  return {
+    type: LOGIN,
+    uid
+  };
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT
+  };
+};
