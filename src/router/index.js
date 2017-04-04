@@ -19,14 +19,13 @@ const redirectIfLoggedIn = (nextState, replace, next) => {
   next();
 };
 
-export const routes = () => {
-  return (
-    <Router history={hashHistory}>
-      <Route path="/">
-        <IndexRoute component={Login} onEnter={redirectIfLoggedIn}/>
-        <Route path="todos" component={App} onEnter={requireLogin}/>
-      </Route>
-    </Router>
-  );
-};
+export default (
+  <Router history={hashHistory}>
+    <Route path="/">
+      <IndexRoute component={Login} onEnter={redirectIfLoggedIn}/>
+      <Route path="todos" component={App} onEnter={requireLogin}/>
+    </Route>
+  </Router>
+);
+
 

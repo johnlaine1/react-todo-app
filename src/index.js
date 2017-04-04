@@ -6,8 +6,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 
 import firebase from './firebase';
-import {routes} from './router';
-import {setTodos, getTodos} from './api/TodoAPI';
+import router from './router';
 import {startAddTodos} from './actions';
 import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -28,11 +27,9 @@ const store = createStore(rootReducer, compose(
 
 store.dispatch(startAddTodos());
 
-
-
 ReactDOM.render(
   <Provider store={store}>
-    {routes()}
+    {router}
   </Provider>,
   document.getElementById('root')
 );
