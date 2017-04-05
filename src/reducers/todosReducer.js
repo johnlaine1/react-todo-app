@@ -1,6 +1,6 @@
 import uuid from 'uuid/v1';
 import moment from 'moment';
-import {CREATE_TODO, DELETE_TODO, UPDATE_TODO, CREATE_TODOS} from '../actions';
+import {CREATE_TODO, DELETE_TODO, UPDATE_TODO, CREATE_TODOS, LOGOUT} from '../actions';
 
 
 const INITIAL_STATE = [];
@@ -27,6 +27,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         ...action.payload
       ];
+    case LOGOUT:
+      return [];
     default:
       return state;
   }

@@ -117,18 +117,18 @@ export const startLogin = () => {
   };
 };
 
+export const login = (uid) => {
+  return {
+    type: LOGIN,
+    uid
+  };
+};
+
 export const startLogout = () => {
   return (dispath, getState) => {
     return firebase.auth().signOut().then(() => {
       console.log('Logged out');
     });
-  };
-};
-
-export const login = (uid) => {
-  return {
-    type: LOGIN,
-    uid
   };
 };
 
