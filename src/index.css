@@ -4,6 +4,12 @@ body {
 #root {
   background-color: #f5f5f5;
 }
-.add-todo-btn {
+.add-todo .btn {
   margin-top: 5px;
 }
+
+.email-login .btn,
+.email-create-account .btn{
+  margin-top: 10px;
+}
+

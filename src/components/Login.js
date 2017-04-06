@@ -3,8 +3,18 @@ import {connect} from 'react-redux';
 import {startLogin} from '../actions';
 
 class Login extends Component {
-  onLogin() {
-    this.props.startLogin();
+  onGitHubLogin() {
+    this.props.startLogin('github');
+  }
+  onEmailLogin(e) {
+    e.preventDefault();
+    const {email, password} = this.refs;
+    this.props.startLogin('email', email.value, password.value);
+  }
+  onEmailCreateAccount(e) {
+    e.preventDefault();
+    const {newEmail, newPassword} = this.refs;
+    this.props.startLogin('emailCreateAccount', newEmail.value, newPassword.value);
   }
   render() {
     return (
@@ -13,9 +23,31 @@ class Login extends Component {
           <h1>Todo App</h1>
         </div>
         <div>
-          <h3>Login</h3>
-          <p>Login with GitHub account</p>
-          <button onClick={this.onLogin.bind(this)} className="btn btn-primary">Login with Github</button>
+          <h2>Login</h2>
+          <div className="github-login">
+            <button onClick={this.onGitHubLogin.bind(this)} className="btn btn-primary">Login with Github</button>
+          </div>
+          <hr/>
+          <div className="email-login">
+            <form onSubmit={this.onEmailLogin.bind(this)}>
+              <div><input placeholder="Email" type="email" ref="email" /></div>
+              <div><input placeholder="Password" type="password" ref="password" /></div>
+              <div>
+                <button className="btn btn-primary" type="submit">Login with Email/Password</button>
+              </div>
+            </form>
+          </div>
+          <hr/>
+          <div className="email-create-account">
+            <h3>Create a new Account</h3>
+            <form onSubmit={this.onEmailCreateAccount.bind(this)}>
+              <div><input placeholder="Email" type="email" ref="newEmail" /></div>
+              <div><input placeholder="Password" type="password" ref="newPassword" /></div>
+              <div>
+                <button className="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );

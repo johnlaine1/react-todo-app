@@ -107,13 +107,26 @@ export const startToggleTodo = (id, completed) => {
   };
 };
 
-export const startLogin = () => {
+export const startLogin = (loginType, email, password) => {
   return (dispath, getState) => {
-    firebase.auth().signInWithPopup(githubProvider).then((result) => {
-      console.log('Auth success', result);
-    }, (error) => {
-      console.log('Auth error', error);
-    });
+    let authResponse = {};
+    switch (loginType) {
+      case 'github':
+        authResponse = firebase.auth().signInWithPopup(githubProvider);
+        break;
+      case 'email':
+        authResponse = firebase.auth().signInWithEmailAndPassword(email, password);
+        break;
+      case 'emailCreateAccount':
+        authResponse = firebase.auth().createUserWithEmailAndPassword(email, password);
+        break;
+    }
+    
+    authResponse.then((result) => {
+        console.log('Auth success', result);
+      }, (error) => {
+        console.log('Auth error', error);
+      });
   };
 };
 

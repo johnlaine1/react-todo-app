@@ -17,13 +17,13 @@ class TodoAddForm extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="add-todo">
         <form onSubmit={this.onSubmit.bind(this)}>
           <div>
             <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
           </div>
           <div>
-            <button className="btn btn-primary add-todo-btn" type="submit">Add Todo</button>
+            <button className="btn btn-primary" type="submit">Add Todo</button>
           </div>
         </form>
       </div>  
