@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {startLogin} from '../actions';
 
 class Login extends Component {
-  onGitHubLogin() {
+  onGitHubLogin(e) {
+    e.preventDefault();
     this.props.startLogin('github');
   }
   onEmailLogin(e) {
