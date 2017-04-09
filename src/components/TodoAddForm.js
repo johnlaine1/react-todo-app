@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {startAddTodo} from '../actions';
 
 class TodoAddForm extends Component {
-  onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const {startAddTodo} = this.props;
     const todo = this.refs.todoTitle;
@@ -18,7 +18,7 @@ class TodoAddForm extends Component {
   render() {
     return (
       <div className="add-todo">
-        <form onSubmit={this.onSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <input ref="todoTitle" type="text" placeholder="What do you need to do?"/>
           </div>
