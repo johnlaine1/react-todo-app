@@ -10,13 +10,14 @@ class TodoAddForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {startAddTodo} = this.props;
-    const todo = this.refs.todoTitle;
+    const todo = this.state.formInputTitle;
+    const todoInputField = this.refs.todoTitle;
     
-    if (!todo.value) {
-      todo.focus();
+    if (!todo) {
+      todoInputField.focus();
     } else {
-      startAddTodo(todo.value);
-      todo.value = '';
+      startAddTodo(todo);
+      this.setState({formInputTitle: ''});
     }
   }
   handleChange(e) {
