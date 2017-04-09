@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+
 import {startLogout} from '../actions';
 import TodoList from './TodoList';
 import TodoAddForm from './TodoAddForm';
 import TodoSearch from './TodoSearch';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../index.css';
 
 
 class App extends Component {

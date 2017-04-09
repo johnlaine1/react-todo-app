@@ -8,8 +8,6 @@ import store from './store';
 import router from './router';
 import {startAddTodos, login, logout} from './actions';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
