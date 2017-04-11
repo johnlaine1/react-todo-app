@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import {updateSearchText, toggleShowCompletedTodos} from '../actions';
 
 class TodoSearch extends Component {
+  constructor(props) {
+    super(props);
+    this.onSearchChange = this.onSearchChange.bind(this);
+  }
   onSearchChange() {
     const searchText = this.refs.searchText.value;
     this.props.updateSearchText(searchText);
