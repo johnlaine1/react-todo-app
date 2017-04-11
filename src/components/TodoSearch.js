@@ -20,7 +20,7 @@ class TodoSearch extends Component {
         <div className="form-group">
           <label>
             <input 
-              onChange={this.onSearchChange.bind(this)}
+              onChange={this.onSearchChange}
               ref="searchText"
               type="search" 
               className="form-control" 

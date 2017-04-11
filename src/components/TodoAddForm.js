@@ -6,6 +6,9 @@ class TodoAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = {formInputTitle: ''};
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -28,10 +31,10 @@ class TodoAddForm extends Component {
   render() {
     return (
       <div className="add-todo">
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <input value={this.state.formInputTitle} 
-             onChange={this.handleChange.bind(this)} 
+             onChange={this.handleChange} 
              ref="todoTitle" 
              type="text" 
              placeholder="What do you need to do?"/>
