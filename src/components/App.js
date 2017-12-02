@@ -11,7 +11,7 @@ import '../index.css';
 
 class App extends Component {
   onLogout(e) {
-    e.preventDefault;
+    e.preventDefault();
     this.props.startLogout();
   }
   render() {
